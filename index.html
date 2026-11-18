@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Enliven — enhancing social health through inclusive community engagement and healthier communities.">
+  <title>Enliven | Enhancing Social Health</title>
+  <style>
+    :root{
+      --purple:#35205f; --red:#e74743; --orange:#f28b28; --yellow:#f5c344;
+      --ink:#29243a; --muted:#6c6877; --cream:#fffaf4; --white:#fff;
+      --shadow:0 18px 55px rgba(45,29,75,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1140px,calc(100% - 40px));margin:auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid #eeeaf2}
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:32px;letter-spacing:-2px;color:var(--purple)}
+    .brand-logo{display:block;width:245px;max-width:42vw;height:auto;object-fit:contain}
+    .footer-logo{width:205px;filter:brightness(0) invert(1)}
+    .links{display:flex;align-items:center;gap:30px;font-size:14px;font-weight:650;color:#514b5d}
+    .links a:hover{color:var(--red)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;border-radius:999px;background:var(--purple);color:white;font-weight:700;font-size:14px;box-shadow:0 8px 20px #35205f25;transition:.2s}
+    .btn:hover{transform:translateY(-2px);background:#4a2d7d}
+    .menu{display:none;border:0;background:none;font-size:25px;color:var(--purple)}
+    .hero{overflow:hidden;position:relative;background:linear-gradient(115deg,#fff9f3 0%,#fff 55%,#fff1e7 100%);padding:88px 0 94px}
+    .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+    .hero:before{width:470px;height:470px;right:-100px;top:-190px;background:radial-gradient(circle,#f6c84c66 0 28%,#ef8a3344 29% 48%,#e7474322 49% 67%,transparent 68%)}
+    .hero:after{width:270px;height:270px;right:13%;bottom:-190px;border:35px solid #e7474315}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:55px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--red);font-weight:800;text-transform:uppercase;letter-spacing:1.8px;font-size:11px}
+    .eyebrow:before{content:"";width:27px;height:3px;background:var(--orange);border-radius:5px}
+    h1{font-size:clamp(42px,6vw,68px);line-height:1.06;letter-spacing:-2.8px;color:var(--purple);margin:20px 0}
+    h1 span{color:var(--red)}
+    .lead{font-size:18px;color:var(--muted);max-width:550px;margin:0 0 30px}
+    .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .btn-light{background:#fff;color:var(--purple);border:1px solid #e9e2ef;box-shadow:none}
+    .visual{min-height:390px;position:relative;display:grid;place-items:center}
+    .circle-art{width:min(390px,90%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 36% 35%,#f7c94d 0 16%,#f39b32 17% 33%,#e84b45 34% 51%,#4a2b72 52% 70%,#35205f 71%);box-shadow:var(--shadow);position:relative}
+    .circle-art:before,.circle-art:after{content:"";position:absolute;inset:12%;border:2px solid #ffffff9c;border-radius:50%}
+    .circle-art:after{inset:25%;border-color:#ffffff80}
+    .circle-label{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;font-size:27px;line-height:1.15;font-weight:850;letter-spacing:-.8px;text-shadow:0 2px 12px #35205f55}
+    .float{position:absolute;background:#fff;padding:13px 18px;border-radius:16px;box-shadow:var(--shadow);font-size:13px;font-weight:750;color:var(--purple)}
+    .float.one{top:50px;left:0}.float.two{bottom:45px;right:-5px}
+    .section{padding:88px 0}
+    .section-head{text-align:center;max-width:680px;margin:0 auto 45px}
+    .section-head h2{font-size:clamp(30px,4vw,43px);line-height:1.15;letter-spacing:-1.4px;color:var(--purple);margin:13px 0}
+    .section-head p{color:var(--muted);margin:0}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+    .about-art{min-height:330px;border-radius:28px;background:linear-gradient(135deg,#f8c94d,#f18a35 45%,#e74743 75%,#44286d);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+    .about-art:before,.about-art:after{content:"";position:absolute;border:2px solid #ffffff8a;border-radius:50%;width:360px;height:360px;left:-80px;top:-115px}
+    .about-art:after{width:260px;height:260px;left:auto;top:auto;right:-45px;bottom:-130px}
+    .about-note{position:absolute;left:35px;bottom:30px;color:#fff;font-size:28px;line-height:1.1;font-weight:850;max-width:250px}
+    .about-copy h2{font-size:39px;line-height:1.12;letter-spacing:-1.5px;color:var(--purple);margin:14px 0}
+    .about-copy p{color:var(--muted)}
+    .services{background:var(--cream)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{background:#fff;border:1px solid #f0eaf2;border-radius:22px;padding:28px;box-shadow:0 8px 30px #35205f08;transition:.2s}
+    .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:24px;background:#fff0e8;margin-bottom:20px}
+    .card:nth-child(2) .icon{background:#fff6d9}.card:nth-child(3) .icon{background:#f1eafb}
+    .card h3{font-size:19px;color:var(--purple);margin:0 0 10px}
+    .card p{font-size:14px;color:var(--muted);margin:0}
+    .impact{padding:70px 0;background:var(--purple);color:#fff}
+    .impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    .impact h2{font-size:clamp(30px,4vw,42px);line-height:1.15;letter-spacing:-1px;margin:0 0 15px}
+    .impact p{color:#e5dff0;margin:0}
+    .impact-tag{justify-self:end;border:1px solid #ffffff50;border-radius:20px;padding:23px 28px;font-weight:750;font-size:18px;max-width:330px}
+    .contact{background:#fff}
+    .contact-box{background:#fff8f2;border-radius:28px;padding:45px;display:grid;grid-template-columns:1fr 1fr;gap:35px}
+    .contact-box h2{font-size:36px;line-height:1.1;color:var(--purple);margin:12px 0}
+    .contact-box p{color:var(--muted)}
+    .contact-details{display:grid;gap:18px;align-content:center}
+    .detail{display:flex;gap:14px;align-items:flex-start}
+    .detail b{display:block;color:var(--purple);font-size:14px}
+    .detail span{font-size:14px;color:var(--muted)}
+    footer{background:#21163b;color:#e9e3f0;padding:28px 0}
+    .foot{display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:13px}
+    .foot .brand{color:#fff;font-size:25px}.foot .brand small{color:#c7bdd5}
+    @media(max-width:800px){
+      .links{display:none;position:absolute;top:82px;left:0;right:0;background:#fff;padding:22px 25px 28px;flex-direction:column;align-items:flex-start;border-bottom:1px solid #eee}
+      .links.open{display:flex}.menu{display:block}.nav>.btn{display:none}
+      .hero{padding:65px 0}.hero-grid,.about-grid,.impact-grid,.contact-box{grid-template-columns:1fr}
+      .visual{min-height:330px}.circle-art{width:300px}.float.one{left:4%}.float.two{right:3%}
+      .cards{grid-template-columns:1fr}.impact-tag{justify-self:start}.contact-box{padding:30px}
+      .foot{flex-direction:column;align-items:flex-start}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Enliven home">
+        <img class="brand-logo" src="https://web.archive.org/web/20220204123318im_/https://enliven.org.au/wp-content/uploads/2018/07/Enliven_web_masthead_1230x146_150ppi.jpg" alt="Enliven — Enhancing Social Health">
+      </a>
+      <nav class="links" id="navLinks" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#services">Our Work</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="btn" href="#contact">Get in touch</a>
+      <button class="menu" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Enhancing social health</div>
+          <h1>Stronger communities.<br><span>Healthier futures.</span></h1>
+          <p class="lead">We bring people and communities together through inclusive engagement, shared knowledge and practical action for better social health.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#about">Discover Enliven</a>
+            <a class="btn btn-light" href="#contact">Contact our team</a>
+          </div>
+        </div>
+        <div class="visual" aria-label="Abstract colourful Enliven-inspired artwork">
+          <div class="circle-art"><div class="circle-label">People.<br>Connection.<br>Wellbeing.</div></div>
+          <div class="float one">Inclusive communities</div>
+          <div class="float two">Knowledge into action</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap about-grid">
+        <div class="about-art"><div class="about-note">Together, we can make a difference.</div></div>
+        <div class="about-copy">
+          <div class="eyebrow">Who we are</div>
+          <h2>Creating connection and positive change.</h2>
+          <p>Enliven is a community-focused organisation working to strengthen social health. We value the knowledge, experiences and strengths that people bring to their communities.</p>
+          <p>Our approach is grounded in listening, inclusion and collaboration — helping organisations connect with communities in meaningful ways.</p>
+          <a class="btn" href="#contact">Let's connect</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What we do</div>
+          <h2>Working together for healthier communities</h2>
+          <p>We support meaningful participation and build bridges between organisations and the communities they serve.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="icon">🤝</div><h3>Community engagement</h3><p>Building trusted relationships and creating welcoming ways for people to participate and have their voices heard.</p></article>
+          <article class="card"><div class="icon">🌏</div><h3>Cultural inclusion</h3><p>Supporting culturally responsive approaches that recognise the diversity, strengths and lived experiences of communities.</p></article>
+          <article class="card"><div class="icon">💡</div><h3>Learning & evaluation</h3><p>Turning community knowledge and project learning into practical insights that can inform better outcomes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact">
+      <div class="wrap impact-grid">
+        <div><h2>Good things happen when every voice matters.</h2><p>We believe stronger connections, shared understanding and inclusive action help communities thrive.</p></div>
+        <div class="impact-tag">CONNECTED · RESILIENT · INNOVATIVE</div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="wrap contact-box">
+        <div>
+          <div class="eyebrow">Say hello</div>
+          <h2>Let's start a conversation.</h2>
+          <p>Have a question or want to explore working together? Get in touch with the Enliven team.</p>
+          <a class="btn" href="mailto:info@enliven.org.au">Email Enliven</a>
+        </div>
+        <div class="contact-details">
+          <div class="detail"><div class="icon">📍</div><div><b>Visit us</b><span>Suite 4, 31 Robinson Street<br>Dandenong VIC 3175, Australia</span></div></div>
+          <div class="detail"><div class="icon">☎️</div><div><b>Call us</b><span>03 9791 1768</span></div></div>
+          <div class="detail"><div class="icon">✉️</div><div><b>Email us</b><span>info@enliven.org.au</span></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <a class="brand" href="#home" aria-label="Enliven home"><img class="brand-logo footer-logo" src="https://web.archive.org/web/20220204123318im_/https://enliven.org.au/wp-content/uploads/2018/07/Enliven_web_masthead_1230x146_150ppi.jpg" alt="Enliven — Enhancing Social Health"></a>
+      <span>© <span id="year"></span> Enliven. All rights reserved.</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const opened = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(opened));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
